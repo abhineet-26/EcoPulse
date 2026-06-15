@@ -1,0 +1,44 @@
+{
+  "transport": {
+    "petrolCar": 0.17,
+    "dieselCar": 0.18,
+    "motorbike": 0.07,
+    "bus": 0.05,
+    "metro": 0.03,
+    "autoRickshaw": 0.06,
+    "bicycle": 0.0,
+    "walking": 0.0,
+    "domesticFlight": 0.25
+  },
+  "electricity": {
+    "indiaGridAverage": 0.82,
+    "comment": "kg CO2e per kWh — CEA India 2022-23"
+  },
+  "fuel": {
+    "lpgPerKg": 2.98,
+    "lpgCylinder14_2kg": 42.0,
+    "pngPerCubicMeter": 2.0
+  },
+  "diet": {
+    "heavyMeat": 3.3,
+    "average": 2.5,
+    "vegetarian": 1.7,
+    "vegan": 1.5,
+    "comment": "kg CO2e per person per day — Our World in Data / Poore & Nemecek 2018"
+  },
+  "waste": {
+    "landfillPerKg": 0.5,
+    "compostedPerKg": 0.1,
+    "comment": "kg CO2e per kg of waste — IPCC Guidelines"
+  },
+  "water": {
+    "perLiter": 0.0003,
+    "comment": "kg CO2e per liter — treatment and pumping"
+  },
+  "benchmarks": {
+    "indiaAveragePerDay": 4.4,
+    "globalAveragePerDay": 13.0,
+    "sustainableTargetPerDay": 2.7,
+    "sources": "Our World in Data, World Bank, IEA 2023"
+  }
+}

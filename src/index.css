@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Custom Base Styles ─────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --eco-primary: #00D4A0;
+    --eco-secondary: #00B4D8;
+    --eco-accent: #7C3AED;
+    --eco-dark: #0A0F1E;
+    --eco-darker: #060C18;
+    color-scheme: dark;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0A0F1E;
+    color: #F0F4FF;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus visible styles for keyboard navigation */
+  *:focus-visible {
+    outline: 2px solid var(--eco-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0,212,160,0.3);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,212,160,0.5);
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ── Component Classes ──────────────────────────────────────────────────────── */
+@layer components {
+  /* Glass card */
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl border border-white/10;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  .glass-card-hover:hover {
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #00D4A0, #00B4D8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-accent {
+    background: linear-gradient(135deg, #7C3AED, #A855F7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effects */
+  .glow-eco {
+    box-shadow: 0 0 30px rgba(0, 212, 160, 0.25);
+  }
+  .glow-accent {
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.25);
+  }
+
+  /* Eco button */
+  .btn-eco {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200;
+    background: linear-gradient(135deg, #00D4A0, #00B4D8);
+    color: #0A0F1E;
+    box-shadow: 0 4px 15px rgba(0, 212, 160, 0.3);
+  }
+  .btn-eco:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(0, 212, 160, 0.4);
+  }
+  .btn-eco:active {
+    transform: translateY(0);
+  }
+  .btn-eco:focus-visible {
+    outline: 2px solid #00D4A0;
+    outline-offset: 2px;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 text-eco-muted;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.08);
+    color: #F0F4FF;
+  }
+
+  /* Input fields */
+  .input-eco {
+    @apply w-full px-4 py-3 rounded-xl text-sm font-medium;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #F0F4FF;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .input-eco:focus {
+    border-color: rgba(0,212,160,0.5);
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 3px rgba(0,212,160,0.1);
+  }
+  .input-eco::placeholder {
+    color: #8892B0;
+  }
+
+  /* Select */
+  .select-eco {
+    @apply input-eco appearance-none cursor-pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%238892B0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+  }
+  .select-eco option {
+    background: #0D1B2A;
+    color: #F0F4FF;
+  }
+
+  /* Range slider */
+  .slider-eco {
+    @apply w-full h-2 rounded-full appearance-none cursor-pointer;
+    background: rgba(255,255,255,0.1);
+    outline: none;
+  }
+  .slider-eco::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 rounded-full cursor-pointer;
+    background: linear-gradient(135deg, #00D4A0, #00B4D8);
+    box-shadow: 0 2px 8px rgba(0,212,160,0.4);
+    transition: transform 0.2s;
+  }
+  .slider-eco::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
+  .slider-eco::-moz-range-thumb {
+    @apply w-5 h-5 rounded-full cursor-pointer border-none;
+    background: linear-gradient(135deg, #00D4A0, #00B4D8);
+    box-shadow: 0 2px 8px rgba(0,212,160,0.4);
+  }
+
+  /* Category color pills */
+  .pill-transport { @apply bg-blue-500/20 text-blue-400 border border-blue-500/30; }
+  .pill-energy    { @apply bg-yellow-500/20 text-yellow-400 border border-yellow-500/30; }
+  .pill-diet      { @apply bg-green-500/20 text-green-400 border border-green-500/30; }
+  .pill-waste     { @apply bg-orange-500/20 text-orange-400 border border-orange-500/30; }
+
+  /* Screen reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Animated background orbs */
+  .orb {
+    @apply absolute rounded-full pointer-events-none;
+    filter: blur(80px);
+    animation: orb-float 8s ease-in-out infinite;
+  }
+}
+
+/* ── Utility Extensions ─────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+  }
+
+  /* 3D card tilt (applied via JS) */
+  .card-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Number counter animation */
+  .animate-count {
+    animation: slide-up 0.5s ease-out forwards;
+  }
+}
+
+/* ── Background Particle Canvas ─────────────────────────────────────────────── */
+.particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
