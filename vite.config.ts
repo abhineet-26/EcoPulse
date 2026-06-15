@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Carbon-Footprint/',
+  base: '/EcoPulse/',
   test: {
     globals: true,
     environment: 'jsdom',
